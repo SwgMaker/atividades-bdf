@@ -1,0 +1,4 @@
+def mensagem (nome="visitante"):
+    print(f'Olá, {nome}!')
+mensagem('Maria')
+mensagem()

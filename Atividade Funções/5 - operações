@@ -1,0 +1,7 @@
+def operacoes(num1, num2):
+    soma = num1 + num2
+    subtracao = num1 - num2
+    multiplicacao = num1 * num2 
+    return soma, subtracao, multiplicacao
+resultado = operacoes(10, 5)
+print(resultado)

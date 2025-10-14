@@ -1,0 +1,7 @@
+def media(*args):
+    if not args:
+        return 0
+    return sum(args) / len(args)
+print(media(4, 8, 10))
+print(media(1, 2, 3, 4, 5))
+print(media(10, 20, 30, 40, 50, 60, 70))

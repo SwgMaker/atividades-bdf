@@ -1,0 +1,11 @@
+# Função que será usada como operação
+def soma(a, b):
+    return a + b
+
+# Função principal que recebe outra função como parâmetro
+def aplicar_operacao(a, b, operacao):
+    return operacao(a, b)
+
+# Exemplo de uso
+# resultado = aplicar_operacao(3, 4, soma)
+print("Resultado:", resultado)
