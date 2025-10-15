@@ -1,0 +1,18 @@
+class Carro:
+    def __init__(self, marca, modelo, ano):
+        self.marca = marca
+        self.modelo = modelo
+        self.ano = ano
+
+    def mostrar_informacoes(self):
+        print(f"Marca: {self.marca}, Modelo: {self.modelo}, Ano: {self.ano}")
+
+meu_carro = Carro("Toyota", "Corolla", 2020)
+
+print("Antes da alteração:")
+meu_carro.mostrar_informacoes()
+
+meu_carro.ano = 2023
+
+print("Depois da alteração:")
+meu_carro.mostrar_informacoes()
