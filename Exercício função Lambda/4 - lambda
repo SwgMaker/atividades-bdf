@@ -1,0 +1,3 @@
+frutas = ["uva", "banana", "maçã", "laranja"]
+ordenadas = sorted(frutas, key=lambda fruta: len(fruta))
+print(ordenadas)

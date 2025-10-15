@@ -1,0 +1,11 @@
+def reduce(func, lista):
+    resultado = lista[0]
+    for item in lista[1:]:
+        resultado = func(resultado, item)
+    return resultado
+
+numeros = [1, 2, 3, 4, 5]
+
+soma = reduce(lambda a, b: a + b, numeros)
+
+print(soma)

@@ -1,0 +1,3 @@
+nomes = ["ana", "pedro", "maria"]
+nomes_capitalizados = list(map(lambda nome: nome.capitalize(), nomes))
+print(nomes_capitalizados)
