@@ -1,0 +1,35 @@
+class Aluno:
+    def __init__(self, nome, nota):
+        self.nome = nome
+        self.nota = nota
+
+    def __str__(self):
+        return f"Aluno: {self.nome} - Nota: {self.nota}"
+
+class Turma:
+    def __init__(self):
+        self.alunos = []
+
+    def adicionar_aluno(self, aluno):
+        self.alunos.append(aluno)
+        print(f"Aluno {aluno.nome} adicionado com sucesso!")
+
+    def listar_alunos(self):
+        print("\nLista de alunos da turma:")
+        for aluno in self.alunos:
+            print(aluno)
+
+aluno1 = Aluno("Maria", 9.5)
+aluno2 = Aluno("Pedro", 8.0)
+aluno3 = Aluno("Joana", 7.8)
+
+print(aluno1)
+print(aluno2)
+print(aluno3)
+
+turma = Turma()
+turma.adicionar_aluno(aluno1)
+turma.adicionar_aluno(aluno2)
+turma.adicionar_aluno(aluno3)
+
+turma.listar_alunos()
