@@ -1,0 +1,39 @@
+class Pessoa:
+    def __init__(self, nome, data_nasc, cpf, identidade):
+        self.nome = nome
+        self.data_de_nascimento = data_nasc
+        self._cpf = cpf
+        self._identidade = identidade
+        
+    def get_cpf(self):
+        return self._cpf
+    
+    def get_identidade(self):
+        return self._identidade
+        
+    def set_cpf(self, novo_cpf):
+        self._cpf = novo_cpf
+        
+    def set_identidade(self, nova_identidade):
+        self._identidade = nova_identidade
+
+    def exibir_dados(self):
+        print("Dados da Pessoa:")
+        print(f"Nome: {self.nome}")
+        print(f"Data de Nascimento: {self.data_de_nascimento}")
+        print(f"CPF: {self.get_cpf()}")
+        print(f"Identidade: {self.get_identidade()}")
+
+
+aluno_iniciante = Pessoa("Pedro Álvares", "15/03/1995", "111.222.333-44", "RJ-54.321.000")
+
+aluno_iniciante.exibir_dados()
+
+print("-" * 25)
+print("Alterando dados privados...")
+
+aluno_iniciante.set_cpf("444.333.222-11")
+aluno_iniciante.set_identidade("RJ-00.123.456")
+
+print("Novos dados:")
+aluno_iniciante.exibir_dados()

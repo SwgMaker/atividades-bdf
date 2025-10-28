@@ -1,0 +1,31 @@
+class ContaBancaria:
+    def __init__(self, saldo_inicial=0):
+        self._saldo = saldo_inicial
+        self.saldo = saldo_inicial 
+
+    def saldo(self):
+        """Retorna o saldo atual da conta."""
+        print("Acessando o saldo...")
+        return self._saldo
+    def saldo(self, novo_valor):
+        """Define um novo valor para o saldo, aplicando a regra lógica."""
+        print(f"Tentando definir novo saldo: {novo_valor}")
+        
+        if novo_valor >= 0:
+            self._saldo = novo_valor
+            print("Saldo atualizado com sucesso.")
+        else:
+            print(f"ERRO: O saldo não pode ser negativo. O valor {novo_valor} foi ignorado.")
+
+print("--- Teste 1: Criação e Acesso Inicial ---")
+minha_conta = ContaBancaria(saldo_inicial=100)
+
+print(f"Saldo atual: R${minha_conta.saldo:.2f}")
+
+print("\n--- Teste 2: Atualização Válida ---")
+minha_conta.saldo = 150.75
+print(f"Novo saldo: R${minha_conta.saldo:.2f}")
+
+print("\n--- Teste 3: Tentativa de Atualização Inválida (Negativa) ---")
+minha_conta.saldo = -50 
+print(f"Saldo após tentativa inválida: R${minha_conta.saldo:.2f}")
