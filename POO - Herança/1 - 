@@ -1,0 +1,33 @@
+# Crie uma classe Usuario com atributos nome e email. Depois, crie uma classe Cliente que herde de Usuario. Crie uma instancia de um cliente e acesse todos os atributos.#
+
+class Usuario:
+    def __init__(self, nome, email):
+        self.nome = nome
+        self.email = email
+        print(self.nome)
+
+    def exibir_info(self):
+        print(self.nome)
+        print(f"Email: {self.email}")
+
+class Cliente(Usuario):
+    def __init__(self, nome, email, id_cliente):
+        super().__init__(nome, email)
+        self.id_cliente = id_cliente
+        print(f"Objeto Cliente com ID {self.id_cliente}")
+
+    def exibir_info_completa(self):
+        self.exibir_info()
+        print(f"ID do Cliente: {self.id_cliente}")
+
+cliente_exemplo = Cliente(
+    nome="Patrícia Oliveira",
+    email="patricia.o@servico.com",
+    id_cliente="CL_3311"
+)
+print("-" * 40)
+
+print(f"Nome: {cliente_exemplo.nome}")
+print(f"Email: {cliente_exemplo.email}")
+print(f"ID do Cliente: {cliente_exemplo.id_cliente}")
+print("-" * 40)

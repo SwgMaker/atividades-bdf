@@ -1,0 +1,50 @@
+#Na classe Usuario, crie um método saudacao() que retorna "Olá, usuário". Na classe Cliente, sobrescreva esse método para retornar "Olá, cliente". Mostre como funciona a chamada.#
+
+class Usuario:
+    def __init__(self, nome, email):
+        self.nome = nome
+        self.email = email
+
+    def exibir_informacoes(self):
+        print("-" * 25)
+        print(f"Nome: {self.nome}")
+        print(f"Email: {self.email}")
+        
+    def saudacao(self):
+        return "Olá, usuário"
+
+
+class Cliente(Usuario):
+    def __init__(self, nome, email, id_cliente):
+        super().__init__(nome, email)
+        self.id_cliente = id_cliente
+
+    def exibir_informacoes_cliente(self):
+        self.exibir_informacoes()
+        print(f"ID Cliente: {self.id_cliente}")
+        print("-" * 25)
+        
+    def saudacao(self):
+        return "Olá, cliente"
+
+usuario_teste = Usuario(
+    nome="Ana Silva",
+    email="ana.silva@corp.com"
+)
+
+cliente_teste = Cliente(
+    nome="Roberto Souza",
+    email="roberto.souza@corp.com",
+    id_cliente="ID_4590"
+)
+
+
+
+saudacao_usuario = usuario_teste.saudacao()
+print(f"{saudacao_usuario}")
+
+saudacao_cliente = cliente_teste.saudacao()
+print(f"{saudacao_cliente}")
+
+cliente_teste.exibir_informacoes()
+cliente_teste.exibir_informacoes_cliente()

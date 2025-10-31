@@ -1,0 +1,87 @@
+#Crie uma classe Funcionario que herda de Usuario e, em seguida, crie uma classe Gerente que herda de Funcionario. Mostre como instanciar um gerente e acessar seus atributos.#
+
+class Usuario:
+    def __init__(self, nome, email):
+        self.nome = nome
+        self.email = email
+
+    def exibir_informacoes(self):
+        print(f"Nome: {self.nome}")
+        print(f"Email: {self.email}")
+        
+    def saudacao(self):
+        return "Olá, usuário"
+
+
+class Cliente(Usuario):
+    def __init__(self, nome, email, id_cliente, saldo):
+        super().__init__(nome, email)
+        self.id_cliente = id_cliente
+        self.saldo = saldo
+
+    def exibir_informacoes_cliente(self):
+        self.exibir_informacoes()
+        print(f"ID Cliente: {self.id_cliente}")
+        print(f"Saldo: R$ {self.saldo:.2f}")
+
+        
+    def saudacao(self):
+        return "Olá, cliente"
+
+class Funcionario(Usuario):
+    def __init__(self, nome, email, matricula, salario):
+        super().__init__(nome, email)
+        
+        self.matricula = matricula
+        self.salario = salario
+        
+    def exibir_informacoes_funcionario(self):
+        self.exibir_informacoes()
+        print(f"Matrícula: {self.matricula}")
+        print(f"Salário: R$ {self.salario:.2f}")
+
+    def saudacao(self):
+        return f"Olá, {self.nome} da matrícula {self.matricula}."
+
+
+class Gerente(Funcionario):
+    def __init__(self, nome, email, matricula, salario, setor):
+        super().__init__(nome, email, matricula, salario) 
+        self.setor = setor
+
+    def exibir_informacoes(self):
+        self.exibir_informacoes_funcionario()
+        print(f"Setor de Gerência: {self.setor}")
+    
+    def saudacao(self):
+        return f"Bem-vindo(a), Gerente do setor de {self.setor}!"
+
+
+usuario_teste = Usuario(
+    nome="Ana Silva",
+    email="ana.silva@corp.com"
+)
+print('---------------')
+cliente_teste = Cliente(
+    nome="Roberto Souza",
+    email="roberto.souza@corp.com",
+    id_cliente="ID_4590",
+    saldo=1250.75
+)
+
+saudacao_usuario = usuario_teste.saudacao()
+print(f"{saudacao_usuario}")
+saudacao_cliente = cliente_teste.saudacao()
+print(f"{saudacao_cliente}")
+
+cliente_teste.exibir_informacoes()
+print('---------------')
+cliente_teste.exibir_informacoes_cliente()
+
+funcionario_teste = Funcionario(
+    nome="Pedro Álvares",
+    email="pedro.alvares@corp.com",
+    matricula="MAT_1001",
+    salario=3500.00
+)
+print('---------------')
