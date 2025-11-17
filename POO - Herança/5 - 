@@ -1,11 +1,10 @@
-#Crie uma classe Funcionario que herda de Usuario e, em seguida, crie uma classe Gerente que herda de Funcionario. Mostre como instanciar um gerente e acessar seus atributos.#
-
 class Usuario:
     def __init__(self, nome, email):
         self.nome = nome
         self.email = email
 
     def exibir_informacoes(self):
+        print("-" * 25)
         print(f"Nome: {self.nome}")
         print(f"Email: {self.email}")
         
@@ -23,65 +22,59 @@ class Cliente(Usuario):
         self.exibir_informacoes()
         print(f"ID Cliente: {self.id_cliente}")
         print(f"Saldo: R$ {self.saldo:.2f}")
-
+        print("-" * 25)
         
     def saudacao(self):
         return "Olá, cliente"
 
 class Funcionario(Usuario):
-    def __init__(self, nome, email, matricula, salario):
+    def __init__(self, nome, email, matricula, cargo):
         super().__init__(nome, email)
-        
         self.matricula = matricula
-        self.salario = salario
-        
+        self.cargo = cargo
+
     def exibir_informacoes_funcionario(self):
         self.exibir_informacoes()
         print(f"Matrícula: {self.matricula}")
-        print(f"Salário: R$ {self.salario:.2f}")
+        print(f"Cargo: {self.cargo}")
+        print("-" * 25)
 
     def saudacao(self):
-        return f"Olá, {self.nome} da matrícula {self.matricula}."
-
+        return f"Olá, funcionário(a) {self.nome.split()[0]}"
 
 class Gerente(Funcionario):
-    def __init__(self, nome, email, matricula, salario, setor):
-        super().__init__(nome, email, matricula, salario) 
-        self.setor = setor
+    def __init__(self, nome, email, matricula, cargo, setor_responsavel):
+        super().__init__(nome, email, matricula, cargo)
+        self.setor_responsavel = setor_responsavel
 
-    def exibir_informacoes(self):
+    def exibir_informacoes_gerente(self):
         self.exibir_informacoes_funcionario()
-        print(f"Setor de Gerência: {self.setor}")
-    
+        print(f"Setor Responsável: {self.setor_responsavel}")
+        print("-" * 25)
+        
     def saudacao(self):
-        return f"Bem-vindo(a), Gerente do setor de {self.setor}!"
+        return f"Bem-vindo(a), Gerente {self.nome.split()[0]}"
 
-
-usuario_teste = Usuario(
-    nome="Ana Silva",
-    email="ana.silva@corp.com"
-)
-print('---------------')
-cliente_teste = Cliente(
-    nome="Roberto Souza",
-    email="roberto.souza@corp.com",
-    id_cliente="ID_4590",
-    saldo=1250.75
+gerente_teste = Gerente(
+    nome="Mariana Costa",
+    email="mariana.costa@corp.com",
+    matricula="MAT_2024_001",
+    cargo="Gerente de Projetos",
+    setor_responsavel="Tecnologia"
 )
 
-saudacao_usuario = usuario_teste.saudacao()
-print(f"{saudacao_usuario}")
-saudacao_cliente = cliente_teste.saudacao()
-print(f"{saudacao_cliente}")
+print("-" * 40)
+print("Demonstração da Classe Gerente")
+print("-" * 40)
 
-cliente_teste.exibir_informacoes()
-print('---------------')
-cliente_teste.exibir_informacoes_cliente()
+saudacao_gerente = gerente_teste.saudacao()
+print(f"Saudação do Gerente: {saudacao_gerente}\n")
 
-funcionario_teste = Funcionario(
-    nome="Pedro Álvares",
-    email="pedro.alvares@corp.com",
-    matricula="MAT_1001",
-    salario=3500.00
-)
-print('---------------')
+print("Informações Completas do Gerente:")
+gerente_teste.exibir_informacoes_gerente()
+
+print("Acessando info de Funcionario:")
+gerente_teste.exibir_informacoes_funcionario()
+
+print("Acessando info de Usuario:")
+gerente_teste.exibir_informacoes()

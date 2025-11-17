@@ -1,0 +1,52 @@
+#Primeiro#
+import sqlite3
+
+conexao = sqlite3.connect('escola_v2.db')
+cursor = conexao.cursor()
+print("Conexão realizada com sucesso!")
+
+#Segundo#
+
+cursor.execute("SELECT * FROM aluno")
+alunos = cursor.fetchall()
+for aluno in alunos:
+    print(aluno)
+
+#Terceiro#
+
+cursor.execute('''
+SELECT nome, ((nota1 + nota2) / 2.0) AS media
+FROM aluno
+ORDER BY media DESC
+LIMIT 10
+''')
+
+top_alunos = cursor.fetchall()
+print("Top 10 alunos com maiores médias:\n")
+for nome, media in top_alunos:
+    print(f"{nome:<15} — Média: {media:.2f}")
+
+#Quarto#
+
+cursor.execute("""
+    SELECT aluno.nome, turma.nome
+    FROM aluno
+    LEFT JOIN turma ON aluno.id_turma = turma.id
+""")
+
+for aluno_nome, turma_nome in cursor.fetchall():
+    print(f"Aluno: {aluno_nome}, Turma: {turma_nome}")
+
+#Quinto#
+
+cursor.execute("""
+    SELECT aluno.*, turma.nome AS nome_turma
+    FROM aluno
+    LEFT JOIN turma ON aluno.id_turma = turma.id
+    WHERE aluno.id_turma = 2
+""")
+
+for row in cursor.fetchall():
+    print(row)
+
+conexao.close()
